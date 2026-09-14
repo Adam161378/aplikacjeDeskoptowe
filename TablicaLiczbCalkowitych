@@ -1,0 +1,32 @@
+import java.util.Scanner;
+
+class Tablica {
+    int[] tab;
+
+    Tablica(int n) {
+        tab = new int[n];
+    }
+
+    void czytaj() {
+        Scanner sc = new Scanner(System.in);
+
+        for (int i = 0; i < tab.length; i++) {
+            tab[i] = sc.nextInt();
+        }
+    }
+
+    void wypisz() {
+        for (int i = 0; i < tab.length; i++) {
+            System.out.print(tab[i] + " ");
+        }
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Tablica t = new Tablica(5);
+
+        t.czytaj();
+        t.wypisz();
+    }
+}
