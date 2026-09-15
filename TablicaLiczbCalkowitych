@@ -20,13 +20,29 @@ class Tablica {
             System.out.print(tab[i] + " ");
         }
     }
-}
+        void sortujBąbelkowo() {
+            int n = tab.length;
+            for (int i = 0; i < n - 1; i++) {
+                for (int j = 0; j < n - i - 1; j++) {
+                    if (tab[j] > tab[j + 1]) {
+                        int a = tab[j];
+                        tab[j] = tab[j + 1];
+                        tab[j + 1] = a;
+                    }
+                }
+            }
+        }
+
+    }
+
 
 public class Main {
     public static void main(String[] args) {
         Tablica t = new Tablica(5);
 
         t.czytaj();
+        t.sortujBąbelkowo();
         t.wypisz();
+
     }
 }
