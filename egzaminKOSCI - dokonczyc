@@ -1,21 +1,30 @@
 import java.util.Random;
 public class kosc {
     public static int liczbaInstancji = 0;
-    public String[] nazwyPlikow = {"kosc1.png", "kosc2.png", "kosc3.png",
-                                     "kosc4.png", "kosc5.png", "kosc6.png"};
+    public String[] nazwyPlikow = {
+            "kosc0.png",
+            "kosc1.png",
+            "kosc2.png",
+            "kosc3.png",
+            "kosc4.png",
+            "kosc5.png",
+            "kosc6.png"
+    };
     public int liczbaOczek;
     public int indexPliku;
     public boolean czyDostepna;
 
-    public kosc(int liczbaOczek){
-        this.liczbaOczek = liczbaOczek;
-        if(liczbaOczek > 0 && liczbaOczek < 7){
+    public kosc(int liczbaOczek) {
+        if (liczbaOczek >= 1 && liczbaOczek <= 6) {
             this.liczbaOczek = liczbaOczek;
             this.indexPliku = liczbaOczek;
+        } else {
+            this.liczbaOczek = 0;
+            this.indexPliku = 0;
         }
-         liczbaInstancji++;
-        czyDostepna = true;
 
+        czyDostepna = true;
+        liczbaInstancji++;
     }
 
     public kosc(){
@@ -26,12 +35,50 @@ public class kosc {
         czyDostepna = true;
         liczbaInstancji++;
     }
-    public void nazwa(){
-        if(czyDostepna == true){
+    public void rzut() {
+        if (czyDostepna) {
             Random rand = new Random();
-            int oczka = rand.nextInt(6)+1;
+            int oczka = rand.nextInt(6) + 1;
             liczbaOczek = oczka;
+            indexPliku = oczka;
+        }
+    }
+    public void zablokuj() {
+        czyDostepna = false;
+    }
+    public String pobierzWartoscSlownie() {
+        switch (liczbaOczek) {
+            case 1:
+                return "jeden";
+            case 2:
+                return "dwa";
+            case 3:
+                return "trzy";
+            case 4:
+                return "cztery";
+            case 5:
+                return "pięć";
+            case 6:
+                return "sześć";
+            default:
+                return "zero";
         }
     }
 
+}
+///////////////////////////////////////
+class Main {
+    public static void main(String[] args) {
+        kosc dice1 = new kosc();
+        kosc dice2 = new kosc();
+
+        System.out.println("Number of instances: " + kosc.liczbaInstancji);
+
+        dice1.rzut();
+
+        System.out.println("Dice1 rolled: " + dice1.liczbaOczek);
+        System.out.println("Dice1 in words: " + dice1.pobierzWartoscSlownie());
+        System.out.println("Dice1 file: " + dice1.nazwyPlikow[dice1.indexPliku]);
+
+    }
 }
