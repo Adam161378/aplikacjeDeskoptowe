@@ -1,0 +1,60 @@
+NWD.java
+import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+public class NWD {
+    private JPanel panelGlowny;
+    private JButton OBLICZNWDButton;
+    private JTextField textField1;
+    private JTextField textField2;
+    private JLabel wynik;
+
+    public NWD() {
+        OBLICZNWDButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                int a = Integer.parseInt(textField1.getText());
+                int b = Integer.parseInt(textField1.getText());
+                int w = Main.NWD(a, b);
+                wynik.setText("Wynik wynosi: " + w);
+            }
+        });
+    }
+
+        public static void main(String[] args) {
+            JFrame frame = new JFrame("NWD");
+            frame.setContentPane(new NWD().panelGlowny);
+            frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+            frame.pack();
+            frame.setSize(600, 300);
+            frame.setLocationRelativeTo(null);
+            frame.setVisible(true);
+        }
+    }
+
+
+---------------------------------------------------------------------
+Main.java
+
+
+//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
+// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
+public class Main {
+    public static void main(String[] args) {
+
+    }
+    public static int NWD(int a, int b) {
+        while (a != b) {
+            if (a > b) {
+                a = a - b;
+            } else {
+                b = b - a;
+            }
+        }
+
+        return a;
+    }
+    }
+
+/////////////////////////////////////////////////////////////////////////////
