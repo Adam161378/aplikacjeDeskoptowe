@@ -1,0 +1,32 @@
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.Scanner;
+//C:\Users\asadowski\IdeaProjects\untitled\src\dane.txt
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("Podaj nazwe pliku:");
+        String nazwaPliku = scanner.nextLine();
+
+        try {
+            File nazwa = new File(nazwaPliku);
+            Scanner plik = new Scanner(nazwa);
+
+            while (plik.hasNextLine()) {
+                String linia = plik.nextLine();
+
+                String poZmianie = linia.replaceAll("[aeouiyAEOUIY]", "");
+
+                System.out.println(poZmianie);
+            }
+
+            plik.close();
+
+        } catch (FileNotFoundException e) {
+            System.out.println("Nie znaleziono pliku!");
+        }
+
+        scanner.close();
+    }
+}
